@@ -19,8 +19,14 @@ jobs:
           hugo-version: '0.92.2'
           extended: true
 
+       - name: cleanup files of public site
+         shell: bash
+         run: rm -rf public
+
       - name: Build
-        run: hugo --gc --minify --cleanDestinationDir
+        working-directory: ./
+        # --cleanDestinationDir 清除舊檔案
+        run: hugo --minify --gc --cleanDestinationDir
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
