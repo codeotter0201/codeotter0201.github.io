@@ -4,7 +4,7 @@ summary: "使用 shioaji api callback 與 place order 產生的物件製作買�
 subtitle: ""
 date: 2022-08-07T03:23:19+08:00
 lastmod: 2022-08-07T03:23:19+08:00
-draft: false
+draft: true
 author: ""
 authorLink: ""
 description: ""
@@ -59,3 +59,9 @@ seo:
   images: []
   # ...
 ---
+
+#### 本地下單紀錄
+
+#### 回報紀錄
+
+#### Orderbook
