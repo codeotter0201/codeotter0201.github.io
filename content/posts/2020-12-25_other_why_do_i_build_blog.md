@@ -11,7 +11,7 @@ description: ""
 license: ""
 images: []
 
-tags: []
+tags: ["self"]
 categories: ["other"]  # trading coding database crawler strategy autotrading
 
 featuredImage: ""
