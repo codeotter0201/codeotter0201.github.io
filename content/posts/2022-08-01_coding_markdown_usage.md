@@ -1,6 +1,6 @@
 ---
-title: "Markdown 常用技巧"
-summary: "紀錄寫文時常使用的語法"
+title: "Markdown 常用語法"
+summary: "紀錄寫文時使用的技巧"
 subtitle: ""
 date: 2022-08-01T00:00:00+08:00
 lastmod: 2022-08-01T00:00:00+08:00
