@@ -2,9 +2,9 @@
 title: "使用 Python 的套件 Vectorbt 做回測"
 summary: "網路上沒什麼中文資源的套件"
 subtitle: ""
-date: 2022-08-08T14:10:57+08:00
-lastmod: 2022-08-08T14:10:57+08:00
-draft: false
+date: 2022-03-30T14:10:57+08:00
+lastmod: 2022-03-30T14:10:57+08:00
+draft: true
 author: ""
 authorLink: ""
 description: ""

@@ -2,9 +2,9 @@
 title: "使用永豐 Shioaji Api 下載資料"
 summary: "利用 Api 搜尋正確的合約並且下載"
 subtitle: ""
-date: 2022-08-07T03:24:37+08:00
-lastmod: 2022-08-07T03:24:37+08:00
-draft: false
+date: 2022-02-01T03:24:37+08:00
+lastmod: 2022-02-01T03:24:37+08:00
+draft: true
 author: ""
 authorLink: ""
 description: ""

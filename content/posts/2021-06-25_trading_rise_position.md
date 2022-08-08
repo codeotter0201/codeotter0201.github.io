@@ -2,8 +2,8 @@
 title: "加碼"
 summary: "關於加碼的迷思與思考"
 subtitle: ""
-date: 2022-08-07T03:18:50+08:00
-lastmod: 2022-08-07T03:18:50+08:00
+date: 2021-06-25T03:18:50+08:00
+lastmod: 2021-06-25T03:18:50+08:00
 draft: false
 
 author: ""

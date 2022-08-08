@@ -2,9 +2,9 @@
 title: "畫出策略的績效圖"
 summary: "個人比較常畫的策略績效圖"
 subtitle: ""
-date: 2022-08-07T03:16:53+08:00
-lastmod: 2022-08-07T03:16:53+08:00
-draft: false
+date: 2021-08-29T03:16:53+08:00
+lastmod: 2021-08-29T03:16:53+08:00
+draft: true
 author: ""
 authorLink: ""
 description: ""

@@ -2,9 +2,9 @@
 title: "處理價格資料"
 summary: 利用 pandas.resample 處理常見 tick 資料集
 subtitle: ""
-date: 2022-08-07T02:57:29+08:00
-lastmod: 2022-08-07T02:57:29+08:00
-draft: false
+date: 2021-04-01T02:57:29+08:00
+lastmod: 2021-04-01T02:57:29+08:00
+draft: true
 author: ""
 authorLink: ""
 description: ""
