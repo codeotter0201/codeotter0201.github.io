@@ -5,18 +5,17 @@ subtitle: ""
 date: {{ .Date }}
 lastmod: {{ .Date }}
 draft: true
+tags: []
+categories: []  # trading coding database crawler strategy autotrading
+
 author: ""
 authorLink: ""
 description: ""
 license: ""
 images: []
 
-tags: []
-categories: []  # trading coding database crawler strategy autotrading
-
 featuredImage: ""
 featuredImagePreview: ""
-
 hiddenFromHomePage: false
 hiddenFromSearch: false
 twemoji: false

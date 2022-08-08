@@ -2,8 +2,8 @@
 title: "為何要寫文章記錄?"
 summary: "       "
 subtitle: ""
-date: 2022-08-08T06:10:57+08:00
-lastmod: 2022-08-08T06:10:57+08:00
+date: 2020-02-01T00:00:00+08:00
+lastmod: 2020-02-01T00:00:00+08:00
 draft: true
 author: ""
 authorLink: ""
@@ -71,3 +71,56 @@ seo:
 所以主要的對象，是對自己說的。
 
 當然如果有人看到我的紀錄，能得到些甚麼，那也很好。
+
+
+---
+### 超連結
+[Upstage](https://github.com/upstage/ "Visit Upstage!")
+
+---
+### 提示字
+[CJK]^(中文/日语/韩语)
+
+---
+### 分數顯示
+[浅色]/[深色]
+
+[88]/[99]
+
+---
+### 列表
+- [ ] **test**
+- [x] *test*
+* test
+- test
+
+---
+### 引用
+> test
+>> test2
+
+---
+### Code
+    line 1 of code
+    line 2 of code
+    line 3 of code
+
+---
+### 表格
+`:` 控制文字內容對齊方向，置中 `:-:`，靠右 `-:`
+|test1|test2|
+|:-:|-:|
+|test1|test2test2test2test2|
+|test1|test2test2test2test2|
+
+---
+### 圖片
+![Alt text](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
+
+---
+### 註腳
+这是一个数字脚注[^1].
+这是一个带标签的脚注[^label]
+
+[^1]: 这是一个数字脚注
+[^label]: 这是一个带标签的脚注
