@@ -110,3 +110,18 @@ seo:
 
 [^1]: 这是一个数字脚注
 [^label]: 这是一个带标签的脚注
+
+---
+### Code paragraph
+```python
+import math
+num = 1 + 1
+```
+
+```markdown
+**haha**
+```
+
+```shell
+mkdir paradise
+```
