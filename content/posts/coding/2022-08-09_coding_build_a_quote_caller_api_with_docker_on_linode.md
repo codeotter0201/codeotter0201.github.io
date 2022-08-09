@@ -1,9 +1,9 @@
 ---
 title: "建立一個雲端報價機"
-summary: "利用 Linode 搭配券商 API，持續收取報價，並持久化儲存"
+summary: "利用 Linode 搭配券商 API，24小時收報價，並持久化儲存"
 subtitle: ""
-date: 2022-08-01T00:00:00+08:00
-lastmod: 2022-08-08T00:00:00+08:00
+date: 2022-08-09T00:00:00+08:00
+lastmod: 2022-08-09T00:00:00+08:00
 draft: true
 author: ""
 authorLink: ""
