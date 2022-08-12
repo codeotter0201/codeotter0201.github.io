@@ -1,0 +1,222 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="noodp">
+<title>處理價格資料 - CodeOtter</title><meta name=Description content="Trading"><meta property="og:title" content="處理價格資料">
+<meta property="og:description" content="利用 pandas.resample 處理常見 tick 資料集">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://codeotter0201.github.io/2021-04-01_trading_ohlcv_dataprocessing/"><meta property="og:image" content="https://codeotter0201.github.io/logo.png"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-04-01T02:57:29+08:00">
+<meta property="article:modified_time" content="2022-08-10T17:57:29+08:00"><meta property="og:site_name" content="CodeOtter">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://codeotter0201.github.io/logo.png">
+<meta name=twitter:title content="處理價格資料">
+<meta name=twitter:description content="利用 pandas.resample 處理常見 tick 資料集">
+<meta name=application-name content="CodeOtter">
+<meta name=apple-mobile-web-app-title content="CodeOtter"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://codeotter0201.github.io/2021-04-01_trading_ohlcv_dataprocessing/><link rel=prev href=https://codeotter0201.github.io/2021-02-01_trading_rise_position/><link rel=next href=https://codeotter0201.github.io/2022-08-01_coding_markdown_usage/><link rel=stylesheet href=/css/style.min.css><link rel=preload href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css as=style onload="this.onload=null,this.rel='stylesheet'">
+<noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css></noscript><link rel=preload href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css as=style onload="this.onload=null,this.rel='stylesheet'">
+<noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"處理價格資料","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/codeotter0201.github.io\/2021-04-01_trading_ohlcv_dataprocessing\/"},"image":["https:\/\/codeotter0201.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"data processing, pandas","wordcount":136,"url":"https:\/\/codeotter0201.github.io\/2021-04-01_trading_ohlcv_dataprocessing\/","datePublished":"2021-04-01T02:57:29+08:00","dateModified":"2022-08-10T17:57:29+08:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"xxxx","logo":"https:\/\/codeotter0201.github.io\/images\/Alipay.jpg"},"author":{"@type":"Person","name":"一隻水獺"},"description":""}</script></head>
+<body data-header-desktop=fixed data-header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
+<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title=CodeOtter>CodeOtter</a>
+</div>
+<div class=menu>
+<div class=menu-inner><a class=menu-item href=/posts/> Posts </a><a class=menu-item href=/tags/> Tags </a><a class=menu-item href=/categories/> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder="Search titles or contents..." id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=Search>
+<i class="fas fa-search fa-fw" aria-hidden=true></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=Clear>
+<i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
+</a>
+<span class="search-button search-loading" id=search-loading-desktop>
+<i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i>
+</span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme">
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
+</a></div>
+</div>
+</div>
+</header><header class=mobile id=header-mobile>
+<div class=header-container>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title=CodeOtter>CodeOtter</a>
+</div>
+<div class=menu-toggle id=menu-toggle-mobile>
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class=menu id=menu-mobile><div class=search-wrapper>
+<div class="search mobile" id=search-mobile>
+<input type=text placeholder="Search titles or contents..." id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=Search>
+<i class="fas fa-search fa-fw" aria-hidden=true></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=Clear>
+<i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
+</a>
+<span class="search-button search-loading" id=search-loading-mobile>
+<i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i>
+</span>
+</div>
+<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
+Cancel
+</a>
+</div><a class=menu-item href=/posts/ title>Posts</a><a class=menu-item href=/tags/ title>Tags</a><a class=menu-item href=/categories/ title>Categories</a><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme">
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
+</a></div>
+</div>
+</header><div class="search-dropdown desktop">
+<div id=search-dropdown-desktop></div>
+</div>
+<div class="search-dropdown mobile">
+<div id=search-dropdown-mobile></div>
+</div><main class=main>
+<div class=container><div class=toc id=toc-auto>
+<h2 class=toc-title>Contents</h2>
+<div class=toc-content id=toc-content-auto></div>
+</div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">處理價格資料</h1><div class=post-meta>
+<div class=post-meta-line><span class=post-author><a href=https://codeotter0201.github.io/ title=Author target=_blank rel="noopener noreffer author" class=author><i class="fas fa-user-circle fa-fw" aria-hidden=true></i>一隻水獺</a></span>&nbsp;<span class=post-category>included in <a href=/categories/trading/><i class="far fa-folder fa-fw" aria-hidden=true></i>trading</a></span></div>
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw" aria-hidden=true></i>&nbsp;<time datetime=2021-04-01>2021-04-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;136 words&nbsp;
+<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;One minute&nbsp;</div>
+</div><div class="details toc" id=toc-static data-kept>
+<div class="details-summary toc-title">
+<span>Contents</span>
+<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span>
+</div>
+<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#用一些奇怪頻率的原因>用一些奇怪頻率的原因</a></li>
+<li><a href=#resample-對齊的方式>resample 對齊的方式</a>
+<ul>
+<li><a href=#label-closed-參數設定>label, closed 參數設定</a></li>
+</ul>
+</li>
+<li><a href=#嘗試過的解法>嘗試過的解法</a>
+<ul>
+<li><a href=#透過-resample-參數調整>透過 resample 參數調整</a></li>
+<li><a href=#for-loop>for loop</a></li>
+<li><a href=#使用可以整除-60-的頻率>使用可以整除 60 的頻率</a></li>
+</ul>
+</li>
+<li><a href=#結論>結論</a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</div><div class=content id=content><blockquote>
+<p>降頻OHLCV從<code>1T</code>到<code>27T</code></p>
+</blockquote>
+<hr>
+<h3 id=用一些奇怪頻率的原因>用一些奇怪頻率的原因</h3>
+<p>因為大多數程式交易常用的頻率就那樣，尤其是<code>5</code>、<code>15</code>、<code>30</code>這些倍數時間，常常會有滑價的情況發生</p>
+<p>所以有些策略用一點不一樣的頻率，可以稍微減輕實際交易的滑價，大部分會希望早一點點行動</p>
+<p>台灣期貨每天開盤時間為 <code>08:45:00</code>，打算<code>27T</code>換一根K棒，預想中處理完的資料第一根K應該是<code>09:12:00</code></p>
+<p>但如果分鐘頻率無法整除 60 ，實際上<code>pd.resample</code>出來的資料，是無法對齊的，這使得每天第一根K的時間點都不太一樣</p>
+<hr>
+<h3 id=resample-對齊的方式>resample 對齊的方式</h3>
+<h4 id=label-closed-參數設定>label, closed 參數設定</h4>
+<p><code>pandas.resample</code> 可以把時間序列彙整並且做相對應的運算，但使用時要注意產生出的資料標籤是如何對齊</p>
+<p>例如台指期貨開盤時間為 <code>08:45</code>，如果使用 <code>label='right'</code> 那第一筆資料會這樣產生</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>2022-08-03 08:45:00 <span class=m>15000</span>                           <span class=c1># (08:45 -&gt; 08:50)的資料 #</span>
+2022-08-03 08:50:00 <span class=m>15100</span>                           <span class=c1># (08:50 -&gt; 08:55)的資料 #</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果使用 <code>label='left'</code> 那第一筆資料會這樣產生</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>2022-08-03 08:50:00 <span class=m>15000</span>                           <span class=c1># (08:45 -&gt; 08:50)的資料 #</span>
+2022-08-03 08:55:00 <span class=m>15100</span>                           <span class=c1># (08:50 -&gt; 08:55)的資料 #</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>根據上面結果，我現在使用的是<code>label=left</code>，沒什麼原因，就只是覺得比較符合直覺</p>
+<p>另外關於<code>closed</code>預設是<code>right</code>也就是資料會向最後一筆對齊，覺得說明有點困難，實際操作試試會比較有感覺</p>
+<hr>
+<h3 id=嘗試過的解法>嘗試過的解法</h3>
+<h4 id=透過-resample-參數調整>透過 resample 參數調整</h4>
+<ul>
+<li>origin 設定起始時間，但只有設定起始，當資料漸漸往下還是會有偏差</li>
+<li>base 看不太懂，然後我的 macpro 運算失敗🤣</li>
+<li>offset 設定一個參數例如<code>5T</code>時間標籤會按照參數做修正，依然沒有解決無法對齊的問題</li>
+</ul>
+<h4 id=for-loop>for loop</h4>
+<p>先自訂開盤收盤時間，然後針對整個資料集，一天一天計算&mldr;
+取而代之的就是算很慢，光是算<code>3天</code>的<code>1T</code>OHLCV就要花<code>2.2s</code></p>
+<h4 id=使用可以整除-60-的頻率>使用可以整除 60 的頻率</h4>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=n>n</span> <span class=o>=</span> <span class=p>[</span><span class=n>i</span> <span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=mi>60</span><span class=p>)</span> <span class=k>if</span> <span class=mi>60</span> <span class=o>%</span> <span class=n>i</span> <span class=o>==</span> <span class=mi>0</span><span class=p>]</span>
+<span class=p>[</span><span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>,</span> <span class=mi>4</span><span class=p>,</span> <span class=mi>5</span><span class=p>,</span> <span class=mi>6</span><span class=p>,</span> <span class=mi>10</span><span class=p>,</span> <span class=mi>12</span><span class=p>,</span> <span class=mi>15</span><span class=p>,</span> <span class=mi>20</span><span class=p>,</span> <span class=mi>30</span><span class=p>]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>這樣可以直接避免<code>pandas.resample</code>之後時間無法對齊的問題</p>
+<p>如果用這個方式，還要額外考慮收盤時間</p>
+<p>台灣期貨日盤收盤時間是<code>13:45</code>所以可以也需要可以整除45，不然就是要把收盤的最後一個index做修改</p>
+<p>如果要用只整除 60 的頻率例如 20 要記得把<code>14:00:00</code>改為<code>13:45:00</code></p>
+<hr>
+<h3 id=結論>結論</h3>
+<p>目前找不到除了 for loop 之外比較快且正確的算法，<code>2.2s</code>的延遲，感覺也違背了一開始避免滑價的初衷</p>
+<blockquote>
+<p>所以決定暫時還是先使用可以同時整除 60、45 的頻率</p>
+</blockquote>
+<p>另外，如果是用 <code>4H</code> 這種頻率，時間標籤會是正確的，但卻會把開盤收盤之間的資料混在一起</p>
+<p>例如<code>12:00:00</code>之後下一根<code>16:00:00</code>，其中<code>16:00:00</code>的資料包含了 12 - 16 點的所有資料，如果對於收盤價比較敏感的策略也需要特別注意</p>
+<hr>
+<p><a href=https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.resample.html target=_blank rel="noopener noreffer">pandas resample</a></p>
+</div><div class=post-footer id=post-footer>
+<div class=post-info>
+<div class=post-info-line>
+<div class=post-info-mod>
+<span>Updated on 2022-08-10</span>
+</div></div>
+<div class=post-info-line>
+<div class=post-info-md></div>
+<div class=post-info-share>
+<span></span>
+</div>
+</div>
+</div>
+<div class=post-info-more>
+<section class=post-tags><i class="fas fa-tags fa-fw" aria-hidden=true></i>&nbsp;<a href=/tags/data-processing/>data processing</a>,&nbsp;<a href=/tags/pandas/>pandas</a></section>
+<section>
+<span><a href=javascript:void(0); onclick=window.history.back()>Back</a></span>&nbsp;|&nbsp;<span><a href=/>Home</a></span>
+</section>
+</div>
+<div class=post-nav><a href=/2021-02-01_trading_rise_position/ class=prev rel=prev title=思考加碼到底是在加甚麼，怎樣才不會加到破產><i class="fas fa-angle-left fa-fw" aria-hidden=true></i>思考加碼到底是在加甚麼，怎樣才不會加到破產</a>
+<a href=/2022-08-01_coding_markdown_usage/ class=next rel=next title="Markdown 常用語法">Markdown 常用語法<i class="fas fa-angle-right fa-fw" aria-hidden=true></i></a></div>
+</div>
+<div id=comments></div></article></div>
+</main><footer class=footer>
+<div class=footer-container><div class=footer-line>Powered by <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> | Theme - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden=true></i> LoveIt</a>
+</div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2022</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=https://codeotter0201.github.io/ target=_blank>一隻水獺</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div>
+</div>
+</footer></div>
+<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title="Back to Top">
+<i class="fas fa-arrow-up fa-fw" aria-hidden=true></i>
+</a><a href=# id=view-comments class=fixed-button title="View Comments">
+<i class="fas fa-comment fa-fw" aria-hidden=true></i>
+</a>
+</div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"Copy to clipboard",maxShownLines:50},comment:{},lightgallery:!0,search:{highlightTag:"em",maxResultLength:10,noResultsFound:"No results found",snippetLength:30}}</script><script type=text/javascript src=/js/theme.min.js></script><script type=text/javascript>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-GLDLFQ4TEM',{anonymize_ip:!0})</script><script type=text/javascript src="https://www.googletagmanager.com/gtag/js?id=G-GLDLFQ4TEM" async></script></body>
+</html>
