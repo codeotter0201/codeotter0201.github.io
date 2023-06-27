@@ -3,7 +3,7 @@ weight: 7
 title: "Theme Documentation - mapbox Shortcode"
 date: 2020-03-03T13:29:41+08:00
 lastmod: 2020-03-03T13:29:41+08:00
-draft: false
+draft: true
 author: "Dillon"
 authorLink: "https://dillonzq.com"
 description: "The mapbox shortcode supports interactive maps in Hugo with Mapbox GL JS library."

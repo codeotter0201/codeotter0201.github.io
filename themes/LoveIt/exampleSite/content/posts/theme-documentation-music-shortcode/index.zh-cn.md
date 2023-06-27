@@ -3,7 +3,7 @@ weight: 8
 title: "主题文档 - music Shortcode"
 date: 2020-03-03T12:29:59+08:00
 lastmod: 2020-03-03T12:29:59+08:00
-draft: false
+draft: true
 author: "Dillon"
 authorLink: "https://dillonzq.com"
 description: "music shortcode 基于 APlayer 和 MetingJS 库提供了一个内嵌的响应式音乐播放器."

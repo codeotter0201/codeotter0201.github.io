@@ -3,7 +3,7 @@ weight: 9
 title: "Theme Documentation - bilibili Shortcode"
 date: 2020-03-03T11:29:41+08:00
 lastmod: 2020-03-03T12:29:41+08:00
-draft: false
+draft: true
 author: "Dillon"
 authorLink: "https://dillonzq.com"
 description: "The bilibili shortcode embeds a responsive video player for bilibili videos."

@@ -3,7 +3,7 @@ weight: 10
 title: "Theme Documentation - typeit Shortcode"
 date: 2020-03-03T10:29:41+08:00
 lastmod: 2020-03-03T10:29:41+08:00
-draft: false
+draft: true
 author: "Dillon"
 authorLink: "https://dillonzq.com"
 description: "The typeit shortcode provides typing animation based on TypeIt library."

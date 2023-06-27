@@ -3,7 +3,7 @@ weight: 1
 title: "Theme Documentation - Basics"
 date: 2020-03-06T21:29:01+08:00
 lastmod: 2020-03-06T21:29:01+08:00
-draft: false
+draft: true
 author: "Dillon"
 authorLink: "https://dillonzq.com"
 description: "Discover what the Hugo - LoveIt theme is all about and the core-concepts behind it."
@@ -148,7 +148,7 @@ hugo new posts/first_post.md
 Feel free to edit the post file by adding some sample content and replacing the title value in the beginning of the file.
 
 {{< admonition >}}
-By default all posts and pages are created as a draft. If you want to render these pages, remove the property `draft: true` from the metadata, set the property `draft: false` or add `-D`/`--buildDrafts` parameter to `hugo` command.
+By default all posts and pages are created as a draft. If you want to render these pages, remove the property `draft: true` from the metadata, set the property `draft: true` or add `-D`/`--buildDrafts` parameter to `hugo` command.
 {{< /admonition >}}
 
 ### 2.5 Launching the Website Locally

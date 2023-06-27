@@ -3,7 +3,7 @@ weight: 1
 title: "主题文档 - 基本概念"
 date: 2020-03-06T21:40:32+08:00
 lastmod: 2020-03-06T21:40:32+08:00
-draft: false
+draft: true
 author: "Dillon"
 authorLink: "https://dillonzq.com"
 description: "探索 Hugo - LoveIt 主题的全部内容和背后的核心概念."
@@ -150,7 +150,7 @@ hugo new posts/first_post.md
 通过添加一些示例内容并替换文件开头的标题, 你可以随意编辑文章.
 
 {{< admonition >}}
-默认情况下, 所有文章和页面均作为草稿创建. 如果想要渲染这些页面, 请从元数据中删除属性 `draft: true`, 设置属性 `draft: false` 或者为 `hugo` 命令添加 `-D`/`--buildDrafts` 参数.
+默认情况下, 所有文章和页面均作为草稿创建. 如果想要渲染这些页面, 请从元数据中删除属性 `draft: true`, 设置属性 `draft: true` 或者为 `hugo` 命令添加 `-D`/`--buildDrafts` 参数.
 {{< /admonition >}}
 
 ### 2.5 在本地启动网站

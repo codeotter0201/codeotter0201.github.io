@@ -3,7 +3,7 @@ weight: 5
 title: "主题文档 - mermaid Shortcode"
 date: 2020-03-03T15:29:59+08:00
 lastmod: 2020-03-03T15:29:59+08:00
-draft: false
+draft: true
 author: "Dillon"
 authorLink: "https://dillonzq.com"
 description: "mermaid shortcode 使用 Mermaid 库提供绘制图表和流程图的功能."
