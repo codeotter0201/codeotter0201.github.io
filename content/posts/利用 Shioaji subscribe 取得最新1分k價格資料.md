@@ -2,8 +2,8 @@
 title: 利用 Shioaji subscribe 取得最新1分k價格資料
 summary: ""
 subtitle: ""
-date: 2023-06-30 00:47:34
-lastmod: 2023-06-30 00:47:34
+date: 2023-06-30T02:20:52+08:00
+lastmod: 2023-06-30T02:20:52+08:00
 draft: false
 author: ""
 authorLink: ""
