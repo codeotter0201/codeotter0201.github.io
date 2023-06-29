@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>data processing - Tag - I&#39;m Ender</title>
+        <link>https://codeotter0201.github.io/tags/data-processing/</link>
+        <description>data processing - Tag - I&#39;m Ender</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>codeotter0201@gmail.com (I&#39;m Ender)</managingEditor>
+            <webMaster>codeotter0201@gmail.com (I&#39;m Ender)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 13 Aug 2022 02:20:52 &#43;0800</lastBuildDate><atom:link href="https://codeotter0201.github.io/tags/data-processing/" rel="self" type="application/rss+xml" /><item>
+    <title>將分鐘資料集降頻為每日資料集，並保有原始分鐘的index</title>
+    <link>https://codeotter0201.github.io/2022-08-13_trading_downsample_1t_data_to_daily.md/</link>
+    <pubDate>Sat, 13 Aug 2022 02:20:52 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://codeotter0201.github.io/2022-08-13_trading_downsample_1t_data_to_daily.md/</guid>
+    <description><![CDATA[使用資料：台指期 08:45 -&gt; 13:45]]></description>
+</item>
+</channel>
+</rss>
