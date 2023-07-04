@@ -31,6 +31,9 @@ jobs:
           publish_branch: gh_pages
           force_orphan: true
 
+      - name: Copy wehelp folder to gh_pages branch
+        run: cp -r wehelp/* gh_pages
+
       - name: cleanup files of public site
         shell: bash
         run: rm -rf public
