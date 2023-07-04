@@ -22,7 +22,7 @@ jobs:
       - name: Build
         working-directory: ./
         # --cleanDestinationDir 清除舊檔案
-        run: hugo --source ./wehelp --minify --gc --cleanDestinationDir
+        run: hugo --minify --gc --cleanDestinationDir
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
