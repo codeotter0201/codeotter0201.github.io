@@ -20,7 +20,7 @@ jobs:
           extended: true
 
       - name: Copy wehelp folder to gh_pages branch
-        run: cp -r wehelp/* .
+        run: cp -r wehelp ./public
 
       - name: Build
         working-directory: ./
