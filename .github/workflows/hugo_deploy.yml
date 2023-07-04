@@ -19,6 +19,9 @@ jobs:
           hugo-version: '0.92.2'
           extended: true
 
+      - name: Copy wehelp folder to gh_pages branch
+        run: cp -r wehelp/* .
+
       - name: Build
         working-directory: ./
         # --cleanDestinationDir 清除舊檔案
@@ -30,9 +33,6 @@ jobs:
           github_token: ${{ secrets.DEPLOY_GITHUB_PAGE_SECRET }}
           publish_branch: gh_pages
           force_orphan: true
-
-      - name: Copy wehelp folder to gh_pages branch
-        run: cp -r wehelp/* gh_pages
 
       - name: cleanup files of public site
         shell: bash
