@@ -27,13 +27,38 @@ function calculateSumOfBonus(data){
     // your code here, based on your own rules
 
     // bonus rule:
-    // performance above average bonus: 20% or 3000
-    // performance average bonus: 10% or 3000
-    // performance below average bonus: 5% or 3000
+    // performance bonus ratio "above average" : 5%
+    // performance bonus ratio "average": 3%
+    // performance bonus ratio "below average": 1%
+
+    // role bonus ratio "Engineer": 5%
+    // role bonus ratio "Sales": 3%
+    // role bonus ratio "CEO": 1%
+
+    // The bonus of each staff is: Math.min(salary * (performance ratio + role ratio), 2500)
     var total_bonus = 0;
     for(i in data["employees"]){
         var salary = data["employees"][i]["salary"];
         var performance = data["employees"][i]["performance"];
+        var role = data["employees"][i]["role"];
+        var bonus_ratio = 0;
+
+        if (performance == "above average") {
+            bonus_ratio += 0.05;
+        } else if (performance == "average") {
+            bonus_ratio += 0.03;
+        } else if (performance == "below average") {
+            bonus_ratio += 0.01;
+        }
+        
+        if (role == "Engineer") {
+            bonus_ratio += 0.05;
+        } else if (role == "Sales") {
+            bonus_ratio += 0.03;
+        } else if (role == "CEO") {
+            bonus_ratio += 0.01;
+        }
+
         if (typeof salary === "string"){
             if (salary.includes("USD")){
                 data["employees"][i]["salary"] = parseInt(salary.replace(/USD/, "")) * 30;
@@ -41,13 +66,9 @@ function calculateSumOfBonus(data){
                 data["employees"][i]["salary"] = parseInt(salary.replace(/,/, ""));
             }
         }
-        if (performance == "above average"){
-            data["employees"][i]['bonus'] = Math.min(data["employees"][i]["salary"] * 0.2, 3000);
-        }else if (performance == "average"){
-            data["employees"][i]['bonus'] = Math.min(data["employees"][i]["salary"] * 0.1, 3000);
-        }else {
-            data["employees"][i]['bonus'] = Math.min(data["employees"][i]["salary"] * 0.05, 3000);
-        }
+
+        data["employees"][i]['bonus'] = Math.min(data["employees"][i]["salary"] * bonus_ratio, 2500);
+        
         total_bonus += data["employees"][i]['bonus'];
     }
     console.log(total_bonus);

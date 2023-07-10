@@ -37,30 +37,47 @@ example data.
 """
 def calculate_sum_of_bonus(data):
     """
-    performance above average bonus: 10% or 1000
-    performance average bonus: 5% or 1000
-    performance below average bonus: 1% or 1000
+    performance bonus ratio "above average" : 5%
+    performance bonus ratio "average": 3%
+    performance bonus ratio "below average": 1%
+
+    role bonus ratio "Engineer": 5%
+    role bonus ratio "Sales": 3%
+    role bonus ratio "CEO": 1%
+
+    The bonus of each staff is: min(salary * (performance ratio + role ratio), 2500)
     """
     # write down your bonus rules in comments
     # your code here, based on your own rules
 
     total_bonus = 0
     for staff in data["employees"]:
+        staff['bonus_ratio'] = 0
+
+        if staff["performance"] == "above average":
+            staff['bonus_ratio'] += 0.05
+        elif staff["performance"] == "average":
+            staff['bonus_ratio'] += 0.03
+        elif staff["performance"] == "below average":
+            staff['bonus_ratio'] += 0.01
+
+        if staff["role"] == "Engineer":
+            staff['bonus_ratio'] += 0.05
+        elif staff["role"] == "Sales":
+            staff['bonus_ratio'] += 0.03
+        elif staff["role"] == "CEO":
+            staff['bonus_ratio'] += 0.01
+
         if isinstance(staff["salary"], str):
             if "USD" in staff["salary"]:
                 staff["salary"] = int(staff["salary"].replace("USD", "")) * 30
             elif "," in staff["salary"]:
                 staff["salary"] = int(staff["salary"].replace(",", ""))
 
-        if staff["performance"] == "above average":
-            staff["bonus"] = min(staff["salary"] * 0.2, 3000)
-        elif staff["performance"] == "average":
-            staff["bonus"] = min(staff["salary"] * 0.1, 3000)
-        else:
-            staff["bonus"] = min(staff["salary"] * 0.05, 3000)
-
-        # print(staff["name"], staff["bonus"])
+        staff["bonus"] = min(staff["salary"] * staff['bonus_ratio'], 2500)
+        
         total_bonus += staff["bonus"]
+
     print(f"total bonus: {total_bonus}")
 
 calculate_sum_of_bonus({
