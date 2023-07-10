@@ -2,12 +2,12 @@ console.log("=== Task 1 ===")
 function findAndPrint(messages){
     // write down your judgment rules in comments
     // your code here, based on your own rules
-    const keywords = ["18 years old", "college student", "legal age", "vote"]
+    const keywords = ["18 years old", "college student", "legal age", "vote"];
     for(var name in messages){
         for(var key in keywords){
             // console.log(keywords[key])
             if(messages[name].includes(keywords[key])){
-                console.log(name)
+                console.log(name);
             }
         }
     }
@@ -27,30 +27,30 @@ function calculateSumOfBonus(data){
     // your code here, based on your own rules
 
     // bonus rule:
-    // performance above average bonus: 10% or 1000
-    // performance average bonus: 5% or 1000
-    // performance below average bonus: 1% or 1000
+    // performance above average bonus: 10% or 3000
+    // performance average bonus: 5% or 3000
+    // performance below average bonus: 1% or 3000
     var total_bonus = 0;
     for(i in data["employees"]){
-        var salary = data["employees"][i]["salary"]
-        var performance = data["employees"][i]["performance"]
+        var salary = data["employees"][i]["salary"];
+        var performance = data["employees"][i]["performance"];
         if (typeof salary === "string"){
             if (salary.includes("USD")){
-                data["employees"][i]["salary"] = parseInt(salary.replace(/USD/, "")) * 30
+                data["employees"][i]["salary"] = parseInt(salary.replace(/USD/, "")) * 30;
             }else if (salary.includes(",")){
-                data["employees"][i]["salary"] = parseInt(salary.replace(/,/, ""))
+                data["employees"][i]["salary"] = parseInt(salary.replace(/,/, ""));
             }
         }
         if (performance == "above average"){
-            data["employees"][i]['bonus'] = Math.min(data["employees"][i]["salary"] * 0.2, 3000)
+            data["employees"][i]['bonus'] = Math.min(data["employees"][i]["salary"] * 0.2, 3000);
         }else if (performance == "average"){
-            data["employees"][i]['bonus'] = Math.min(data["employees"][i]["salary"] * 0.1, 3000)
+            data["employees"][i]['bonus'] = Math.min(data["employees"][i]["salary"] * 0.1, 3000);
         }else {
-            data["employees"][i]['bonus'] = Math.min(data["employees"][i]["salary"] * 0.05, 3000)
+            data["employees"][i]['bonus'] = Math.min(data["employees"][i]["salary"] * 0.05, 3000);
         }
-        total_bonus += data["employees"][i]['bonus']
+        total_bonus += data["employees"][i]['bonus'];
     }
-    console.log(total_bonus)
+    console.log(total_bonus);
 }
 calculateSumOfBonus({
 "employees":[
@@ -115,7 +115,7 @@ function findIndexOfCar(seats, status, number){
     for (i in status){
         if (status[i] == 1){
             if (seats[i] >= number){
-                ret[i] = seats[i] - number
+                ret[i] = seats[i] - number;
             }
         }
     }
