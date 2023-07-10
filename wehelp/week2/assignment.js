@@ -27,9 +27,9 @@ function calculateSumOfBonus(data){
     // your code here, based on your own rules
 
     // bonus rule:
-    // performance above average bonus: 10% or 3000
-    // performance average bonus: 5% or 3000
-    // performance below average bonus: 1% or 3000
+    // performance above average bonus: 20% or 3000
+    // performance average bonus: 10% or 3000
+    // performance below average bonus: 5% or 3000
     var total_bonus = 0;
     for(i in data["employees"]){
         var salary = data["employees"][i]["salary"];
