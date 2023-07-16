@@ -43,7 +43,7 @@
 
 ```python
 import re
-def extract_age(sentence:str, minimum_age:int=17) -> bool:
+def check_sentence_age(sentence:str, minimum_age:int=17) -> bool:
     pattern = r"\b(\d{1,2})\s?(?:years old)\b"
     match = re.search(pattern, sentence)
     if match:
@@ -52,3 +52,36 @@ def extract_age(sentence:str, minimum_age:int=17) -> bool:
     else:
         return False
 ```
+
+## 2023-07-12
+> https://www.mropengate.com/2020/07/pythonic-python.html
+### list comprehension
+list comprehension 真的蠻好用的，補充些之前研究時小撞牆的點
+1. 只使用 if 要擺在 for 後面，使用 if else 要擺在 for 前面
+```python
+zoo = ['cat', 'dog', 'pig', 'kitty']
+[i for i in zoo if i == 'kitty']                #(O)
+[i if i == 'kitty' else None for i in zoo]      #(O)
+[i for i in zoo if i == 'kitty' else None ]     #(X)
+```
+2. 可以用巢狀迴圈，寫法就是接在後面
+```python
+s1 = [0, 1, 2]
+s2 = [4, 3, 2]
+result = []
+for i in s1:
+    for j in s2:
+        result.append(i*j)
+print('Result 1:', result)
+result2 = [i*j for i in s1 for j in s2]
+print('Result 2:', result2)
+```
+### 可變變數 (mutable variable)
+另外我覺得文中提到
+> 小心可變變數 (mutable variable) 作為參數 default 值造成的錯誤
+```python
+def get_datetime_log(mydate=datetime.now(), my_log_list = []):
+    my_log_list.append("current log {}".format(datetime.strftime(mydate, "%Y/%m/%d %H:%M:%S")))
+    return my_log_list
+```
+如果原本預期參數應該每次都要初始化，這樣寫就沒辦法初始化，而且它的範例函式有 append ，如果這函式在實際運作時一直 call 很快就會整個記憶體崩潰，系統爆掉真的很哭，我在專案上線的時候踩過這個坑= =
