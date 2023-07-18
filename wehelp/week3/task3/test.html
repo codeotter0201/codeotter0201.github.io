@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Taipei Attractions</title>
+</head>
+<body>
+  <div id="attractions"></div>
+  <div class="bottom-content">
+    <!-- <div class="bottom-box">
+        <img src="image.jpg" alt="Image">
+        <p>Box 1</p>
+    </div> -->
+  <script>
+    function createBottomBox(url, stitle) {
+      // console.log(url)
+      const bottomBox = document.createElement('div');
+      bottomBox.classList.add('bottom-box');
+
+      const img = document.createElement('img');
+      img.src = url;
+      img.alt = 'Image';
+
+      const p = document.createElement('p');
+      p.textContent = stitle;
+
+      bottomBox.appendChild(img);
+      bottomBox.appendChild(p);
+
+      document.querySelector('.bottom-content').appendChild(bottomBox);
+    }
+    // 获取景点数据
+    fetch('https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json')
+      .then(response => response.json())
+      .then(data => {
+        const attractions = data['result']['results'];
+        console.log(attractions[0]);
+
+        for (let i=3; i < attractions.length; i++){
+          const urlstring = attractions[i]['file'];
+          const stitle = attractions[i]['stitle'];
+          const urls = "https://" + urlstring.split("https://")[1];
+          createBottomBox(urls, stitle);
+        }
+
+        //   // 使用正则表达式匹配第一个网址
+        //   
+        // } 
+
+
+
+
+
+      })
+      // .then(response => console.log(response['result']['results'])
+      // )
+      // .then(response => console.log(response.json())) 
+
+    //   .then(data => {
+    //     const attractions = data.result.results;
+    //     const attractionsContainer = document.getElementById('attractions');
+
+    //     // 遍历每个景点
+    //     attractions.forEach(attraction => {
+    //       // 创建景点元素容器
+    //       const attractionElement = document.createElement('div');
+    //       attractionElement.classList.add('attraction');
+
+    //       // 创建景点图片元素
+    //       const imageElement = document.createElement('img');
+    //       imageElement.src = attraction.file;
+    //       imageElement.alt = attraction.stitle;
+    //       attractionElement.appendChild(imageElement);
+
+    //       // 创建景点名称元素
+    //       const titleElement = document.createElement('h2');
+    //       titleElement.textContent = attraction.stitle;
+    //       attractionElement.appendChild(titleElement);
+
+    //       // 添加景点元素到容器
+    //       attractionsContainer.appendChild(attractionElement);
+    //     });
+    //   })
+      .catch(error => {
+        console.log('Error fetching attractions data: ', error);
+      });
+  </script>
+
+  <style>
+    .attraction {
+      margin-bottom: 20px;
+    }
+
+    img {
+      max-width: 100%;
+    }
+  </style>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1 class="title">My Website</h1>
+    <nav>
+      <div class="mobile-menu">
+        <img src="mobile_menu.svg" width="30px" height="30px">
+      </div>
+      <ul class="menu">
+        <li><a href="#">item 1</a></li>
+        <li><a href="#">item 2</a></li>
+        <li><a href="#">item 3</a></li>
+        <li><a href="#">item 4</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="welcome">
+    <h2>Welcome to MyHome</h2>
+  </div>
+
+  <main>
+    <div class="top-content"></div>
+    <div class="bottom-content">
+    </div>
+  </main>
+  <script>
+    function createBottomBox(url, stitle) {
+      // console.log(url)
+      const bottomBox = document.createElement('div');
+      bottomBox.classList.add('bottom-box');
+
+      const img = document.createElement('img');
+      img.src = url;
+      img.alt = 'Image';
+
+      const p = document.createElement('p');
+      p.textContent = stitle;
+
+      bottomBox.appendChild(img);
+      bottomBox.appendChild(p);
+      document.querySelector('.bottom-content').appendChild(bottomBox);
+    }
+    function createTopBox(url, stitle) {
+      // console.log(url)
+      const topBox = document.createElement('div');
+      topBox.classList.add('top-box');
+
+      const img = document.createElement('img');
+      img.src = url;
+      img.alt = 'Image';
+
+      const p = document.createElement('p');
+      p.textContent = stitle;
+
+      topBox.appendChild(img);
+      topBox.appendChild(p);
+      document.querySelector('.top-content').appendChild(topBox);
+    }
+    // 获取景点数据
+    fetch('https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json')
+      .then(response => response.json())
+      .then(data => {
+        const attractions = data['result']['results'];
+        console.log(attractions[0]);
+
+        for (let i=0; i < 3; i++){
+          const urlstring = attractions[i]['file'];
+          const stitle = attractions[i]['stitle'];
+          const urls = "https://" + urlstring.split("https://")[1];
+          createTopBox(urls, stitle);
+        }
+
+        for (let i=3; i < attractions.length; i++){
+          const urlstring = attractions[i]['file'];
+          const stitle = attractions[i]['stitle'];
+          const urls = "https://" + urlstring.split("https://")[1];
+          createBottomBox(urls, stitle);
+        }
+      })
+  </script>
+</body>
+
+
+
+</html>
