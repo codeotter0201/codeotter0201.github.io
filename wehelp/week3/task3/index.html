@@ -28,9 +28,13 @@
 
   <main>
     <div class="top-content"></div>
-    <div class="bottom-content">
+    <div class="bottom-content"></div>
+    <div class="loadBtn">
+      <button id="loadMoreBtn">載入更多</button>
     </div>
   </main>
+
+  
   <script>
     function createBottomBox(url, stitle) {
       // console.log(url)
@@ -69,22 +73,47 @@
       .then(response => response.json())
       .then(data => {
         const attractions = data['result']['results'];
-        console.log(attractions[0]);
-
-        for (let i=0; i < 3; i++){
+        // console.log(attractions[0]);
+        let showedBoxes = 0;
+        // print first top boxes
+        for (let i=0; i < 3; i++){ 
           const urlstring = attractions[i]['file'];
           const stitle = attractions[i]['stitle'];
           const urls = "https://" + urlstring.split("https://")[1];
           createTopBox(urls, stitle);
+          showedBoxes += 1;
         }
 
-        for (let i=3; i < attractions.length; i++){
-          const urlstring = attractions[i]['file'];
-          const stitle = attractions[i]['stitle'];
-          const urls = "https://" + urlstring.split("https://")[1];
-          createBottomBox(urls, stitle);
+        let startIndex = 3; // 起始索引
+        let endIndex = Math.min(startIndex + 11, attractions.length - 1); // 結束索引，確保不超過陣列的範圍
+
+        function getListItems(start, end) {
+          const items = attractions.slice(start, end + 1);
+          startIndex = endIndex + 1; // 更新起始索引
+          endIndex = Math.min(startIndex + 11, attractions.length - 1); // 更新結束索引，確保不超過陣列的範圍
+
+          for (let i=0;i < items.length; i++){
+            console.log();
+            const urlstring = items[i]['file'];
+            const stitle = items[i]['stitle'];
+            const urls = "https://" + urlstring.split("https://")[1];
+            createBottomBox(urls, stitle);
+          }
         }
+        // 第一次執行
+        getListItems(startIndex, endIndex);
+        document.getElementById('loadMoreBtn').addEventListener('click', function() {
+
+          // 取出下一批項目
+          getListItems(startIndex, endIndex);
+
+          if (endIndex === attractions.length - 1) {
+            document.getElementById('loadMoreBtn').style.display = 'none'; // 如果沒有更多項目，隱藏載入更多按鈕
+          }
+        });
       })
+
+
   </script>
 </body>
 
