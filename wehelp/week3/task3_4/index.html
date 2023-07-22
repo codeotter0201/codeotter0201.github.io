@@ -101,13 +101,16 @@
           }
         }
         
-        getListItems(startIndex, endIndex); // 第一次執行
-        document.getElementById('loadMoreBtn').addEventListener('click', function() {
+        // 第一次執行印出一開始的 12 個 bottom boxes
+        getListItems(startIndex, endIndex);
 
+        // 點擊印出 bottom boxes
+        document.getElementById('loadMoreBtn').addEventListener('click', function() {
           // 取出下一批項目
           getListItems(startIndex, endIndex);
 
-          if (endIndex === attractions.length - 1) {
+          // 判斷如果是最後一頁，就不會再顯示按鈕
+          if (document.querySelectorAll('.bottom-box').length + 3 >= attractions.length) {
             document.getElementById('loadMoreBtn').style.display = 'none'; // 如果沒有更多項目，隱藏載入更多按鈕
           }
         });

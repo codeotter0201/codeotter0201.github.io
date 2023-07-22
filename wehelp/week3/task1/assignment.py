@@ -23,9 +23,9 @@ def extract_mrt(mrts:dict) -> list:
 
 def create_files(data:list[dict]) -> None:
     attractions, mrts = [], {}
-    for pot in data:
-        attractions.append(get_attraction_row(pot))
-        mrt_row = get_mrt_row(pot)
+    for spot in data:
+        attractions.append(get_attraction_row(spot))
+        mrt_row = get_mrt_row(spot)
         mrts[mrt_row[0]] = mrts.get(mrt_row[0], [])
         mrts[mrt_row[0]].append(mrt_row[1])
     mrts = extract_mrt(mrts)
