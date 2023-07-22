@@ -73,8 +73,8 @@
       .then(response => response.json())
       .then(data => {
         const attractions = data['result']['results'];
-        // console.log(attractions[0]);
         let showedBoxes = 0;
+
         // print first top boxes
         for (let i=0; i < 3; i++){ 
           const urlstring = attractions[i]['file'];
@@ -100,8 +100,8 @@
             createBottomBox(urls, stitle);
           }
         }
-        // 第一次執行
-        getListItems(startIndex, endIndex);
+        
+        getListItems(startIndex, endIndex); // 第一次執行
         document.getElementById('loadMoreBtn').addEventListener('click', function() {
 
           // 取出下一批項目
