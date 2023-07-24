@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beautiful Body Content</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin: 0 0 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 0 0 10px;
+        }
+
+        #squared_form {
+            display: flex;
+            justify-content: center;
+        }
+
+        .centered-placeholder {
+            text-align: center;
+            width: 50%;
+        }
+
+        .centered-placeholder::placeholder {
+            text-align: center;
+        }
+
+        .dashed-line {
+            border-bottom: 0 dashed #ccc;
+            width: 100%;
+        }
+
+        .square_input {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>{{ page_name }}</h1>
+    </div>
+
+    <div class="container">
+        {% if username %}
+            <h2>{{ username }} 恭喜您，成功登入系統</h2>
+            <a href="/signout">
+                <p>登出系統</p>
+            </a>
+            {% if square_result %}
+                <hr class="dashed-line">
+                <h2>正整數平方計算結果</h2>
+                <p> {{ square_result }} </p>
+                <form id="clear_form" >
+                    <button type="submit" class="btn btn-danger mt-3">清空暫存</button>
+                </form>
+            {% else %}
+                <hr class="dashed-line">
+                <h2>計算正整數的平方</h2>
+                <form id="square_form" class="mt-0" onsubmit="return appendNumberToAction()" action="/square/" method="get">
+                    <div class="square_input">
+                        <input type="text" class="form-control centered-placeholder" id="square" placeholder="正整數">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary mt-3">開始計算</button>
+                </form>
+            {% endif %}
+
+        {% elif error_msg %}
+            <h2> {{ error_msg }} </h2>
+            <a href="/">
+                <p>回到首頁</p>
+            </a>
+
+        {% else %}
+            <!-- <h1 class="text-center mt-5">Login Page</h1> -->
+            <form id="loginForm" class="mt-5">
+                <div class="form-group">
+                    <!-- <label for="username">Username</label> -->
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <!-- <label for="password">Password</label> -->
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="checkOK" name="checkOK">
+                    <label class="form-check-label" for="checkOK">I agree to the terms and conditions</label>
+                </div>
+                <!-- <button type="submit" class="btn btn-primary mt-3" onclick="window.location.href='/member'">Login</button> -->
+                <button type="submit" class="btn btn-primary mt-3">Login</button>
+            </form>
+        {% endif %}
+    </div>
+
+    
+
+    
+
+    <script>
+        function appendNumberToAction() {
+            var input = document.getElementById("square").value;
+            if (isNaN(input) || input <= 0) {
+                alert("Please enter a positive number");
+                return false;
+            }
+            var form = document.getElementById("square_form");
+            form.action += input;
+            return true;
+        }
+        $(document).ready(function() {
+            $("#clear_form").submit(function(event) {
+                $.ajax({
+                    url: "/clear",
+                    type: "POST",
+                    success: function(response) {
+                        alert("暫存已清空");
+                        location.reload();
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+            
+            // 監聽表單提交事件
+            $("#loginForm").submit(function(event) {
+                event.preventDefault(); // 阻止表單自動提交
+
+                // 檢查 checkOK 是否已勾選
+                var checkOK = $("#checkOK").prop("checked");
+                if (!checkOK) {
+                    alert("Please agree to the terms and conditions");
+                    return;
+                }
+
+                // 獲取用戶輸入的用戶名和密碼
+                var username = $("#username").val();
+                var password = $("#password").val();
+
+                // 發送 POST 請求到 /signin
+                $.ajax({
+                    url: "/signin",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        username: username,
+                        password: password
+                    },
+                    success: function(response) {
+                        // if (response.error_msg) {
+                        //     window.location.href = '/error?message=' + response.error_msg;
+                        // } else {
+                        //     window.location.href = '/member';
+                        // }
+                        // console.log("ok!!!!")
+                        // window.location.href = "/member";
+                    },
+                    error: function(response) {
+                        // console.log(response)
+                    },
+                });
+
+                window.location.href='/member';
+                // let em = "{{ error_msg }}";
+                // console.log(em);
+                // if (em){
+                //     console.log(em);
+                // }
+                // else{
+                //     console.log("ok");
+                // }
+                
+            });
+        });
+    </script>
+
+
+
+</body>
+</html>
