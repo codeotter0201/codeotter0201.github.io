@@ -21,10 +21,14 @@ highlight_theme = "css"
 # Put all your custom variables here
 compact_tags = true
 
-remote_repository_url = "https://github.com/welpo/tabi"
+remote_repository_url = "https://github.com/codeotter0201/codeotter0201.github.io"
 remote_repository_git_platform = "auto"
-remote_repository_branch = "main"
+remote_repository_branch = "master"
 show_remote_changes = true
 show_remote_source = true
 
 skin = "sakura"
+
+socials = [
+    { name = "github", url = "https://github.com/codeotter0201/", icon = "github" },
+]
