@@ -24,7 +24,7 @@ social_media_card = "social_cards/blog_toc.jpg"
 ### Zola install
 基本上 Zola 官方文件已經非常容易使用，這邊介紹 MacOS 的步驟。
 
-我這邊使用的是 brew 來安裝指令如下：
+我使用的是 [brew](https://brew.sh/) 來安裝指令如下：
 ```bash
 brew install zola
 ```
@@ -36,7 +36,7 @@ zola init blog
 ```
 
 ### Install theme
-接著挑個順眼的 Theme 套用，我這裡使用 [Tabi](https://github.com/welpo/tabi) ，安裝方法建議使用 `git add submodule`[^1]
+接著挑個順眼的 Theme 套用，我選擇的主題是 [Tabi](https://github.com/welpo/tabi) ，安裝方法建議使用 `git add submodule`[^1]
 ```bash
 git submodule add https://github.com/welpo/tabi.git themes/tabi
 ```
@@ -53,7 +53,7 @@ zola serve
 
 ### Deploy
 #### Github Pages 
-網路上已經有很多分享，這邊可以用 `github pages` 當作關鍵字搜尋一下教學，就不在這邊展開。
+網路上已經有很多分享，推薦用 `github pages` 當作關鍵字搜尋一下教學，就不在這展開。
 
 主要步驟有這些：
 - 新增一個 repository 命名需符合 `github pages` 規則
