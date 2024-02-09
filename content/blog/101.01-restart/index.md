@@ -85,4 +85,4 @@ git push origin master
 
 [^1]: Zola 官方文件提供的 github actions 設定部署時會檢查 submodle ，如果用 `git clone` 會部署失敗
 
-[^2]: 我使用的主題用 `uses: shalzz/zola-deploy-action@v0.17.2` 會失敗，檢查本地環境後改為 `@v0.18.0` 成功順利部署
+[^2]: 官方提供的設定版本為 `uses: shalzz/zola-deploy-action@v0.17.2` 這在我使用的主題會失敗，檢查本地環境後將版本部分改為 `@v0.18.0` 成功順利部署
