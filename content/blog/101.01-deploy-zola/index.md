@@ -11,7 +11,7 @@ tags = ["memo", "blog", "zola"]
 [extra]
 quick_navigation_buttons = true
 footnote_backlinks = true 
-social_media_card = "social_cards/blog_toc.jpg"
+social_media_card = "/img/social_card.jpg"
 +++
 <details>
     <summary><b>Table of Contents</b></summary>
