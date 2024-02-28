@@ -32,3 +32,5 @@ skin = "sakura"
 socials = [
     { name = "github", url = "https://github.com/codeotter0201/", icon = "github" },
 ]
+
+favicon_emoji = "🦦"
