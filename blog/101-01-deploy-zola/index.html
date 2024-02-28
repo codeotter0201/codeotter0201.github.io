@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://codeotter0201.github.io">
+
+    
+    <title>~/ender • 使用 Zola 建立 Blog</title>
+
+    
+    
+    
+        <link rel=icon href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 105 55"><text y=".7em" font-size="82">🦦</text></svg>'>
+    
+
+    
+    <link rel="alternate" type="application/atom+xml" title="~/ender" href="https://codeotter0201.github.io/atom.xml">
+
+    
+    
+    
+        <link rel="stylesheet" href="https://codeotter0201.github.io/inter_subset_en.css?h=d8cf4ad058d6c3a4015b">
+    
+
+    
+        <link rel="stylesheet" href="https://codeotter0201.github.io/main.css?h=9df5dc290dd2e3eee827" />
+        <link rel="stylesheet" href="https://codeotter0201.github.io/skins/sakura.css?h=79eac8d397b4620ff948" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="透過 Github Pages + Actions + Zola 建立靜態網站" />
+        <meta property="og:description" content="透過 Github Pages + Actions + Zola 建立靜態網站" />
+
+    
+        <meta name="robots" content="index, nofollow" />
+    
+
+    <meta property="og:title" content="使用 Zola 建立 Blog" />
+    <meta property="og:type" content="article" />
+
+    
+        
+        
+        
+
+        
+        
+            
+            
+            
+                
+            
+        
+
+        
+        <meta property="og:image" content="https://codeotter0201.github.io/img/social_card.jpg?h=41676c3d2f05c09f4ef6" />
+        <meta property="og:image:width" content="1400" />
+        <meta property="og:image:height" content="800" />
+        <meta name="twitter:image" content="https://codeotter0201.github.io/img/social_card.jpg?h=41676c3d2f05c09f4ef6" />
+        <meta name="twitter:card" content="summary_large_image" />
+    
+
+    <meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;codeotter0201.github.io&#x2F;blog&#x2F;101-01-deploy-zola&#x2F;" /><meta property="og:site_name" content="~&#x2F;ender"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src &#x27;self&#x27; data:;img-src &#x27;self&#x27; https:&#x2F;&#x2F;* data:;style-src &#x27;self&#x27;;frame-src player.vimeo.com https:&#x2F;&#x2F;www.youtube-nocookie.com;connect-src 'self';script-src 'self' 'self'">
+
+        <noscript><link rel="stylesheet" href="https://codeotter0201.github.io/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://codeotter0201.github.io/js/initializeTheme.min.js"></script>
+        <script defer src="https://codeotter0201.github.io/js/themeSwitcher.min.js"></script><script defer src="https://codeotter0201.github.io/search_index.en.js?h=28b3a8ba39e9adb52b56"></script>
+        <script defer src="https://codeotter0201.github.io/js/searchElasticlunr.min.js?h=5ddcb5767730b9edb560"></script>
+
+        </head>
+
+
+<body>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href=https://codeotter0201.github.io>~&#x2F;ender</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://codeotter0201.github.io/blog/">
+                                blog
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://codeotter0201.github.io/archive/">
+                                archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://codeotter0201.github.io/tags/">
+                                tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://codeotter0201.github.io/projects/">
+                                projects
+                                </a>
+                            </li>
+                        <li class="js">
+                        <div role="button" tabindex="0" id="search-button" class="search-icon interactive-icon" title="Click or press $SHORTCUT to open search" aria-label="Click or press $SHORTCUT to open search">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                                <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                            </svg>
+                        </div>
+                    </li>
+
+                    
+                    
+
+                    <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+            </div>
+        
+    </nav>
+</header>
+
+    <div class="content">
+
+        
+        
+
+
+
+
+<main>
+    <article>
+        <h1 class="article-title">
+            使用 Zola 建立 Blog
+        </h1>
+
+        <ul class="meta">
+            
+
+            
+                <li>
+
+
+
+
+
+    
+
+    
+        
+        
+            
+        
+    
+
+    
+    9th
+    
+        Feb 2024
+    
+
+
+</li>
+            
+
+            
+            
+                • <li title="587 words">3&nbsp;min read</li>
+            •&nbsp;<li>Tags:&nbsp;</li><li><a href=https://codeotter0201.github.io/tags/memo/>memo</a>,&nbsp;</li><li><a href=https://codeotter0201.github.io/tags/blog/>blog</a>,&nbsp;</li><li><a href=https://codeotter0201.github.io/tags/zola/>zola</a></li>
+                </ul><ul class="meta last-updated"><li>Last updated on 
+
+
+
+
+
+    
+
+    
+        
+        
+            
+        
+    
+
+    
+    9th
+    
+        Feb 2024
+    
+
+
+</li>
+                
+                
+                    •
+                    <li><a href="https://github.com/codeotter0201/codeotter0201.github.io/commits/master/content/blog&#x2F;101.01-deploy-zola&#x2F;index.md"  rel="">See changes<small> ↗</small></a></li>
+                
+            
+        </ul>
+
+        
+
+        
+        
+
+        <section class="body">
+            
+            
+            <details>
+    <summary><b>Table of Contents</b></summary>
+    
+
+<div class="toc-container">
+    
+
+    <ul>
+        
+            
+            
+                <li><a href="https://codeotter0201.github.io/blog/101-01-deploy-zola/#bu-shu-guo-cheng">部署過程</a>
+                    
+                        <ul>
+                            
+                                
+                                    <li><a href="https://codeotter0201.github.io/blog/101-01-deploy-zola/#zola-install">Zola install</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://codeotter0201.github.io/blog/101-01-deploy-zola/#zola-init">Zola init</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://codeotter0201.github.io/blog/101-01-deploy-zola/#install-theme">Install theme</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://codeotter0201.github.io/blog/101-01-deploy-zola/#first-post">First post</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://codeotter0201.github.io/blog/101-01-deploy-zola/#deploy">Deploy</a>
+                                        
+                                            <ul>
+                                                
+                                                    
+                                                        <li><a href="https://codeotter0201.github.io/blog/101-01-deploy-zola/#github-pages">Github Pages</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://codeotter0201.github.io/blog/101-01-deploy-zola/#github-actions">Github Actions</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://codeotter0201.github.io/blog/101-01-deploy-zola/#push">Push</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                            </ul>
+                                        
+                                    </li>
+                                
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://codeotter0201.github.io/blog/101-01-deploy-zola/#xin-de">心得</a>
+                    
+                </li>
+            
+        
+    </ul>
+</div>
+
+
+</details>
+<hr />
+<h2 id="bu-shu-guo-cheng"><a class="header-anchor no-hover-padding" href="#bu-shu-guo-cheng" aria-label="Anchor link for: bu-shu-guo-cheng"><span class="link-icon" aria-hidden="true"></span></a>
+部署過程</h2>
+<h3 id="zola-install"><a class="header-anchor no-hover-padding" href="#zola-install" aria-label="Anchor link for: zola-install"><span class="link-icon" aria-hidden="true"></span></a>
+Zola install</h3>
+<p>基本上 Zola 官方文件已經非常容易使用，這邊介紹 MacOS 的步驟。</p>
+<p>我使用的是 <a href="https://brew.sh/">brew</a> 來安裝指令如下：</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">brew</span></span><span class="z-meta z-function-call z-arguments z-shell"> install zola</span>
+</span></code></pre>
+<h3 id="zola-init"><a class="header-anchor no-hover-padding" href="#zola-init" aria-label="Anchor link for: zola-init"><span class="link-icon" aria-hidden="true"></span></a>
+Zola init</h3>
+<p>完成下載後初始化 zola 專案</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">zola</span></span><span class="z-meta z-function-call z-arguments z-shell"> init blog</span>
+</span></code></pre>
+<h3 id="install-theme"><a class="header-anchor no-hover-padding" href="#install-theme" aria-label="Anchor link for: install-theme"><span class="link-icon" aria-hidden="true"></span></a>
+Install theme</h3>
+<p>接著挑個順眼的 Theme 套用，我選擇的主題是 <a href="https://github.com/welpo/tabi">Tabi</a> ，安裝方法建議使用 <code>git add submodule</code><sup class="footnote-reference"><a href="#1">1</a></sup></p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> submodule add https://github.com/welpo/tabi.git themes/tabi</span>
+</span></code></pre>
+<h3 id="first-post"><a class="header-anchor no-hover-padding" href="#first-post" aria-label="Anchor link for: first-post"><span class="link-icon" aria-hidden="true"></span></a>
+First post</h3>
+<p>參考 <a href="https://github.com/welpo/tabi">Tabi</a> 在 <code>content</code> 建立 <code>_index.md</code>後，就可以撰寫第一篇文章</p>
+<p>以本主題為例，我需要建立 <code>/blog/{your_post_title}/index.md</code></p>
+<p>都準備好了之後就可以在嘗試本地運作看有沒有效果</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">zola</span></span><span class="z-meta z-function-call z-arguments z-shell"> serve</span>
+</span></code></pre>
+<h3 id="deploy"><a class="header-anchor no-hover-padding" href="#deploy" aria-label="Anchor link for: deploy"><span class="link-icon" aria-hidden="true"></span></a>
+Deploy</h3>
+<h4 id="github-pages"><a class="header-anchor no-hover-padding" href="#github-pages" aria-label="Anchor link for: github-pages"><span class="link-icon" aria-hidden="true"></span></a>
+Github Pages</h4>
+<p>網路上已經有很多分享，推薦用 <code>github pages</code> 當作關鍵字搜尋一下教學，就不在這展開。</p>
+<p>主要步驟有這些：</p>
+<ul>
+<li>新增一個 repository 命名需符合 <code>github pages</code> 規則</li>
+<li>設定 repo token 提供給 <code>github actions</code> 設定檔案使用</li>
+</ul>
+<h4 id="github-actions"><a class="header-anchor no-hover-padding" href="#github-actions" aria-label="Anchor link for: github-actions"><span class="link-icon" aria-hidden="true"></span></a>
+Github Actions</h4>
+<p>主要步驟有這些：</p>
+<ul>
+<li>在 zola 專案裡面建立 workflows ，路徑像是這樣 <code>/blog/.github/workflows/{your_action_file}.yml</code></li>
+<li>設定檔的寫法可以直接參考 <a href="https://www.getzola.org/documentation/deployment/github-pages/">Zola Deploy</a>，這邊要注意官方提供的的設定檔需要注意版本<sup class="footnote-reference"><a href="#2">2</a></sup></li>
+</ul>
+<h4 id="push"><a class="header-anchor no-hover-padding" href="#push" aria-label="Anchor link for: push"><span class="link-icon" aria-hidden="true"></span></a>
+Push</h4>
+<p>最後就是最簡單的 git 組合技推上 Github 完成部署上線</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> add .</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> commit<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>m</span> <span class="z-string z-quoted z-double z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&quot;</span>zola init<span class="z-punctuation z-definition z-string z-end z-shell">&quot;</span></span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> push origin master</span>
+</span></code></pre>
+<hr />
+<h2 id="xin-de"><a class="header-anchor no-hover-padding" href="#xin-de" aria-label="Anchor link for: xin-de"><span class="link-icon" aria-hidden="true"></span></a>
+心得</h2>
+<p>原本 Blog 是用 Hugo 建立的，但當時從安裝 Hugo 、選擇主題、個人化設定、部署，每個步驟都花了大概 2 天，前前後後應該花了兩週才能夠從手機端看到自己的網站。</p>
+<p>也許是因為 Zola 的 client command 只有 4 種可以使用，省了很多走錯路的可能。</p>
+<p>這次改用 Zola 架設的整體流程都沒有遇到太多阻礙，有可能是因為有先前 Hugo 的部署經驗，整體只花了 1 小時不到就完成，令我蠻驚訝的😆</p>
+<hr />
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>Zola 官方文件提供的 github actions 設定部署時會檢查 submodule ，如果用 <code>git clone</code> 會部署失敗</p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p>官方提供的設定版本為 <code>uses: shalzz/zola-deploy-action@v0.17.2</code> 這在我使用的主題會失敗，檢查本地環境後將版本部分改為 <code>@v0.18.0</code> 成功順利部署</p>
+</div>
+
+        </section>
+
+        
+        
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+
+        
+        
+
+        
+        
+
+    </article>
+</main>
+
+    <div id="button-container">
+        
+        
+            <div id="toc-floating-container">
+                <input type="checkbox" id="toc-toggle" class="toggle"/>
+                <label for="toc-toggle" class="overlay"></label>
+                <label for="toc-toggle" id="toc-button" class="button" title="Toggle Table of Contents">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M414.82-193.094q-18.044 0-30.497-12.32-12.453-12.319-12.453-30.036t12.453-30.086q12.453-12.37 30.497-12.37h392.767q17.237 0 29.927 12.487 12.69 12.486 12.69 30.203 0 17.716-12.69 29.919t-29.927 12.203H414.82Zm0-244.833q-18.044 0-30.497-12.487Q371.87-462.9 371.87-480.45t12.453-29.92q12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.511 12.69 12.512 12.69 29.845 0 17.716-12.69 30.086-12.69 12.37-29.927 12.37H414.82Zm0-245.167q-18.044 0-30.497-12.32t-12.453-30.037q0-17.716 12.453-30.086 12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.486 12.69 12.487 12.69 30.203 0 17.717-12.69 29.92-12.69 12.203-29.927 12.203H414.82ZM189.379-156.681q-32.652 0-55.878-22.829t-23.226-55.731q0-32.549 23.15-55.647 23.151-23.097 55.95-23.097 32.799 0 55.313 23.484 22.515 23.484 22.515 56.246 0 32.212-22.861 54.893-22.861 22.681-54.963 22.681Zm0-245.167q-32.652 0-55.878-23.134-23.226-23.135-23.226-55.623 0-32.487 23.467-55.517t56.12-23.03q32.102 0 54.721 23.288 22.62 23.288 22.62 55.775 0 32.488-22.861 55.364-22.861 22.877-54.963 22.877Zm-.82-244.833q-32.224 0-55.254-23.288-23.03-23.289-23.03-55.623 0-32.333 23.271-55.364 23.272-23.03 55.495-23.03 32.224 0 55.193 23.288 22.969 23.289 22.969 55.622 0 32.334-23.21 55.364-23.21 23.031-55.434 23.031Z"/></svg>
+                </label>
+                <div class="toc-content">
+                    
+
+<div class="toc-container">
+    
+
+    <ul>
+        
+            
+            
+                <li><a href="https://codeotter0201.github.io/blog/101-01-deploy-zola/#bu-shu-guo-cheng">部署過程</a>
+                    
+                        <ul>
+                            
+                                
+                                    <li><a href="https://codeotter0201.github.io/blog/101-01-deploy-zola/#zola-install">Zola install</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://codeotter0201.github.io/blog/101-01-deploy-zola/#zola-init">Zola init</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://codeotter0201.github.io/blog/101-01-deploy-zola/#install-theme">Install theme</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://codeotter0201.github.io/blog/101-01-deploy-zola/#first-post">First post</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://codeotter0201.github.io/blog/101-01-deploy-zola/#deploy">Deploy</a>
+                                        
+                                            <ul>
+                                                
+                                                    
+                                                        <li><a href="https://codeotter0201.github.io/blog/101-01-deploy-zola/#github-pages">Github Pages</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://codeotter0201.github.io/blog/101-01-deploy-zola/#github-actions">Github Actions</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                                    
+                                                        <li><a href="https://codeotter0201.github.io/blog/101-01-deploy-zola/#push">Push</a>
+                                                            
+                                                        </li>
+                                                    
+                                                
+                                            </ul>
+                                        
+                                    </li>
+                                
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://codeotter0201.github.io/blog/101-01-deploy-zola/#xin-de">心得</a>
+                    
+                </li>
+            
+        
+    </ul>
+</div>
+
+
+                </div>
+            </div>
+        
+
+        
+        
+
+        
+        <a href="#" id="top-button" class="no-hover-padding" title="Go to the top of the page">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"/></svg>
+        </a>
+    </div>
+
+
+<span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://codeotter0201.github.io/js/copyCodeToClipboard.min.js"></script><script defer src="https://codeotter0201.github.io/js/footnoteBacklinks.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs">
+                <ul>
+                        <li>
+                            <a class="nav-links no-hover-padding social" rel=" me"  href=https://github.com/codeotter0201/>
+                                <img alt=github title=github src="https://codeotter0201.github.io/social_icons/github.svg">
+                            </a>
+                        </li>
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+
+                
+                Powered by
+                <a rel=""  href="https://www.getzola.org">Zola</a>
+                &
+                <a rel=""  href="https://github.com/welpo/tabi">tabi</a>
+
+                •
+                    <a rel=""  href="https:&#x2F;&#x2F;github.com&#x2F;codeotter0201&#x2F;codeotter0201.github.io">
+                        Site source
+                    </a></small>
+        </div>
+    </section>
+
+    <div id="searchModal" class="search-modal js" role="dialog" aria-labelledby="modalTitle">
+    <h1 id="modalTitle" class="visually-hidden">Search</h1>
+    <div id="modal-content">
+        <div id="searchBar">
+            <div class="search-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                    <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                </svg>
+            </div>
+            <input id="searchInput" role="combobox", autocomplete="off", spellcheck="false" aria-expanded="false", aria-controls="results-container", placeholder="Search…"/>
+            <div id="clear-search" class="close-icon interactive-icon" tabindex="0" role="button" title="Clear search">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                </svg>
+            </div>
+        </div>
+        <div id="results-container">
+            <div id="results-info">
+                <span id="n-results">0</span>&nbsp;<span id="result-text-singular">result</span>
+                <span id="result-text-plural">results</span>
+            </div>
+        <div id="results" role="listbox"></div>
+    </div>
+</div>
+</footer>
+
+</body>
+
+</html>
