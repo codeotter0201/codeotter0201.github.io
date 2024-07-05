@@ -27,7 +27,9 @@ remote_repository_branch = "master"
 show_remote_changes = true
 show_remote_source = true
 
-skin = "sakura"
+# skin = "sakura"
+# skin = "lowcontrast_orange"
+skin = "indigo_ingot"
 
 socials = [
     { name = "github", url = "https://github.com/codeotter0201/", icon = "github" },

@@ -5,9 +5,10 @@ sort_by = "date"
 template = "section.html"
 
 [extra]
-header = {title = "Hello! I'm Ender~", img = "img/main_2.webp", img_alt = "Ender is me!" }
-section_path = "blog/_index.md"
-max_posts = 4
+# header = {title = "Hello! I'm Ender~", img = "img/main_2.webp", img_alt = "Ender is me!" }
+header = {title = "Hello! I'm Ender~"}
+# section_path = "blog/_index.md"
+# max_posts = 4
 +++
 
 一隻普通的 Python 後端工程師
