@@ -1,8 +1,8 @@
 +++
-title = "使用 Zola 建立 Blog"
+title = "透過 Github Pages + Actions + Zola 建立靜態網站"
 date = 2024-02-09
 updated = 2024-02-09
-description = "透過 Github Pages + Actions + Zola 建立靜態網站"
+description = "應用 Zola 與 Github Pages，輕鬆創建部署現代化靜態網站"
 
 [taxonomies]
 

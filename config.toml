@@ -35,4 +35,12 @@ socials = [
     { name = "github", url = "https://github.com/codeotter0201/", icon = "github" },
 ]
 
+menu = [
+#    { name = "blog", url = "blog", trailing_slash = true },
+    { name = "archive", url = "archive", trailing_slash = true },
+    { name = "tags", url = "tags", trailing_slash = true },
+#    { name = "projects", url = "projects", trailing_slash = true },
+#    { name = "about", url = "about", trailing_slash = true },
+]
+
 favicon_emoji = "🦦"
