@@ -1,0 +1,450 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://codeotter0201.github.io">
+
+    
+    <title>~/ender • 解決 MacOS 中英切換時的輸入錯誤</title>
+
+    
+    
+    
+        <link rel=icon href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 105 55"><text y=".7em" font-size="82">🦦</text></svg>'>
+    
+
+    
+    <link rel="alternate" type="application/atom+xml" title="~/ender" href="https://codeotter0201.github.io/atom.xml">
+
+    
+    
+    
+        <link rel="stylesheet" href="https://codeotter0201.github.io/inter_subset_en.css?h=d8cf4ad058d6c3a4015b">
+    
+
+    
+        <link rel="stylesheet" href="https://codeotter0201.github.io/main.css?h=ea2694862184225dcd8e" />
+        <link rel="stylesheet" href="https://codeotter0201.github.io/skins/indigo_ingot.css?h=e6047cb6066e6092bccd" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="改善 MacOS 中英輸入法切換的效率與準確性" />
+        <meta property="og:description" content="改善 MacOS 中英輸入法切換的效率與準確性" />
+
+    
+        <meta name="robots" content="index, nofollow" />
+    
+
+    <meta property="og:title" content="解決 MacOS 中英切換時的輸入錯誤" />
+    <meta property="og:type" content="article" />
+
+    
+        
+        
+        
+
+        
+        
+            
+            
+            
+                
+            
+        
+
+        
+        <meta property="og:image" content="https://codeotter0201.github.io/img/social_card.jpg?h=41676c3d2f05c09f4ef6" />
+        <meta property="og:image:width" content="1400" />
+        <meta property="og:image:height" content="800" />
+        <meta name="twitter:image" content="https://codeotter0201.github.io/img/social_card.jpg?h=41676c3d2f05c09f4ef6" />
+        <meta name="twitter:card" content="summary_large_image" />
+    
+
+    <meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;codeotter0201.github.io&#x2F;blog&#x2F;macos-capslock&#x2F;" /><meta property="og:site_name" content="~&#x2F;ender"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src &#x27;self&#x27; data:;img-src &#x27;self&#x27; https:&#x2F;&#x2F;* data:;media-src &#x27;self&#x27;;style-src &#x27;self&#x27;;frame-src player.vimeo.com https:&#x2F;&#x2F;www.youtube-nocookie.com;connect-src 'self';script-src 'self' 'self'">
+
+        <noscript><link rel="stylesheet" href="https://codeotter0201.github.io/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://codeotter0201.github.io/js/initializeTheme.min.js"></script>
+        <script defer src="https://codeotter0201.github.io/js/themeSwitcher.min.js"></script><script defer src="https://codeotter0201.github.io/search_index.en.js?h=44b9fe541f51ac56a225"></script>
+        <script defer src="https://codeotter0201.github.io/js/searchElasticlunr.min.js?h=9b8cf8d81ad8868d3e54"></script>
+
+        </head>
+
+
+<body>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href=https://codeotter0201.github.io>~&#x2F;ender</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://codeotter0201.github.io/archive/">
+                                archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://codeotter0201.github.io/tags/">
+                                tags
+                                </a>
+                            </li>
+                        <li class="js">
+                        <div role="button" tabindex="0" id="search-button" class="search-icon interactive-icon" title="Click or press $SHORTCUT to open search" aria-label="Click or press $SHORTCUT to open search">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                                <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                            </svg>
+                        </div>
+                    </li>
+
+                    
+                    
+
+                    <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+            </div>
+        
+    </nav>
+</header>
+
+    <div class="content">
+
+        
+        
+
+
+
+
+<main>
+    <article>
+        <h1 class="article-title">
+            解決 MacOS 中英切換時的輸入錯誤
+        </h1>
+
+        <ul class="meta"><li>9th Jul 2024</li>&nbsp;•&nbsp;<li title="678 words">4 min read</li>&nbsp;•&nbsp;<li>Tags:&nbsp;</li><li><a href=https://codeotter0201.github.io/tags/memo/>memo</a>,&nbsp;</li><li><a href=https://codeotter0201.github.io/tags/macos/>macos</a></li></ul><ul class="meta last-updated"><li>Updated on 9th Jul 2024</li>
+                
+                •&nbsp;<li><a href="https://github.com/codeotter0201/codeotter0201.github.io/commits/master/content/blog&#x2F;2024-07-09-macos-capslock&#x2F;index.md"  rel="">See changes<small>&nbsp;<span class="arrow-corner">↗</span></small></a></li>
+                
+            
+        </ul>
+
+        
+
+        
+        
+
+        <section class="body">
+            
+            
+            <details>
+    <summary><b>Table of Contents</b></summary>
+    
+
+<div class="toc-container">
+    
+
+    <ul>
+        
+            
+            
+                <li><a href="https://codeotter0201.github.io/blog/macos-capslock/#macos-zhong-ying-shu-ru-de-que-dian">MacOS 中英輸入的缺點</a>
+                    
+                        <ul>
+                            
+                                
+                                    <li><a href="https://codeotter0201.github.io/blog/macos-capslock/#1-qu-xiao-zhong-ying-qie-huan">1. 取消中英切換</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://codeotter0201.github.io/blog/macos-capslock/#2-zhong-xin-bang-ding-zhong-ying-qie-huan-gong-neng">2. 重新綁定中英切換功能</a>
+                                        
+                                    </li>
+                                
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://codeotter0201.github.io/blog/macos-capslock/#jie-lun">結論</a>
+                    
+                </li>
+            
+        
+    </ul>
+</div>
+
+
+</details>
+<hr />
+<h2 id="macos-zhong-ying-shu-ru-de-que-dian"><a class="header-anchor no-hover-padding" href="#macos-zhong-ying-shu-ru-de-que-dian" aria-label="Anchor link for: macos-zhong-ying-shu-ru-de-que-dian"><span class="link-icon" aria-hidden="true"></span></a>
+MacOS 中英輸入的缺點</h2>
+<p>我在使用 MacOS 系統做日常開發已經好幾年了，但在中英切換的時候老是卡來卡去，通常在軟體開發的情境之下，大部分時間只需要輸入英文，所以一直以來我也就不以為意 <del>(逃避)</del></p>
+<p>但隨著我推了幾個好同事從 Windows 系統轉換到 MacOS 後，我發現他們都覺得切換輸入法導致的小狀況很是困擾</p>
+<p>秉持著畢竟人家都被我推坑了，售後服務要做好的原則，我終於認真找資料來解決這個問題 😂</p>
+<hr />
+<blockquote>
+<p>實際開始行動前，先整理一下個人在 MacOS 系統下切換中英輸入法的時候，最常遇到兩個問題</p>
+</blockquote>
+<ol>
+<li><strong>切換的速度很慢，有時甚至需要等到 1 秒以上</strong></li>
+<li><strong>用 <code>Caps Lock</code> 切換後，偶爾會在切換過程中失敗，導致輸出全形英文</strong></li>
+</ol>
+<p>簡單搜尋後，發現網路上已經很多大大發現，出現這情況的原因是因為：</p>
+<blockquote>
+<p><code>Caps Lock</code> 除了中英切換功能還帶著大小寫轉換功能<br>
+使得切換時有時會因為兩個功能衝突而導致切換失敗 <del>(是說這失敗頻率根本就是 bug 吧)</del></p>
+</blockquote>
+<p>但解決方式也比想像中簡單，只要把 <code>Caps Lock</code> 的中英切換取消，然後把原本的語言切換功能改為其他映射就好</p>
+<h3 id="1-qu-xiao-zhong-ying-qie-huan"><a class="header-anchor no-hover-padding" href="#1-qu-xiao-zhong-ying-qie-huan" aria-label="Anchor link for: 1-qu-xiao-zhong-ying-qie-huan"><span class="link-icon" aria-hidden="true"></span></a>
+1. 取消中英切換</h3>
+<blockquote>
+<p>直接將 <code>中/英</code> 的選項關閉</p>
+</blockquote>
+<p><img src="https://codeotter0201.github.io/blog/macos-capslock/index-media/b99f39de7f21ca34e71adc84fb83e9209480292a.png" alt="Pasted image 20240709180605.png" title="wikilink" /></p>
+<h3 id="2-zhong-xin-bang-ding-zhong-ying-qie-huan-gong-neng"><a class="header-anchor no-hover-padding" href="#2-zhong-xin-bang-ding-zhong-ying-qie-huan-gong-neng" aria-label="Anchor link for: 2-zhong-xin-bang-ding-zhong-ying-qie-huan-gong-neng"><span class="link-icon" aria-hidden="true"></span></a>
+2. 重新綁定中英切換功能</h3>
+<blockquote>
+<p>我這邊將原先切換中英的 <code>Caps Lock</code> 改為 <code>cmd + escape</code>，可以自由選擇映射方式</p>
+</blockquote>
+<p><img src="https://codeotter0201.github.io/blog/macos-capslock/index-media/8ef7391e7690795bfa7b65eadadb288a5a293c6a.png" alt="Pasted image 20240709181340.png" title="wikilink" /></p>
+<hr />
+<h2 id="jie-lun"><a class="header-anchor no-hover-padding" href="#jie-lun" aria-label="Anchor link for: jie-lun"><span class="link-icon" aria-hidden="true"></span></a>
+結論</h2>
+<p>調整完之後，再也沒遇到尷尬的全形英文，切換中英的速度也提升，停頓感減少很多</p>
+<p>另外在真實使用情境裡，鍵盤預設的輸入法可以直接是中文，因為中文模式時，再使用 <code>Caps Lock</code>，就可以在維持中文輸入法的情境之下，快速切換為輸出 <strong>小寫半形英文</strong> !</p>
+<p>這對於我來說也不需用 <code>cmd + escape</code> 來切換輸入法了，只需維持中文模式就可以同時輸入 <strong>半形大小寫英文、中文</strong> 等需求，相較以前要一直 <code>Caps Lock</code> 切換輸入法，省去了很多時間</p>
+<p>整體來說，最需要適應的是要重新熟悉切換輸入法的方式，但改完後也降低的切換語言的頻率，個人使用上覺得這個 trade off 十分值得!!</p>
+
+        </section>
+
+        
+        
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+
+        
+        
+
+        
+                
+                
+                    
+                    
+                        
+                        
+                        
+                    
+                
+                
+            <nav class="full-width article-navigation">
+                <div></div>
+                <div><a href="https://codeotter0201.github.io/blog/deploy-zola/" aria-label="Prev" aria-describedby="right_title">Prev&nbsp;<span class="arrow">→</span></a>
+                <p aria-hidden="true" id="right_title">透過 Github Pages + Actions + Zola 建立靜態網站</p></div>
+            </nav>
+        
+
+    </article>
+</main>
+
+    <div id="button-container">
+        
+        
+            <div id="toc-floating-container">
+                <input type="checkbox" id="toc-toggle" class="toggle"/>
+                <label for="toc-toggle" class="overlay"></label>
+                <label for="toc-toggle" id="toc-button" class="button" title="Toggle Table of Contents">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M414.82-193.094q-18.044 0-30.497-12.32-12.453-12.319-12.453-30.036t12.453-30.086q12.453-12.37 30.497-12.37h392.767q17.237 0 29.927 12.487 12.69 12.486 12.69 30.203 0 17.716-12.69 29.919t-29.927 12.203H414.82Zm0-244.833q-18.044 0-30.497-12.487Q371.87-462.9 371.87-480.45t12.453-29.92q12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.511 12.69 12.512 12.69 29.845 0 17.716-12.69 30.086-12.69 12.37-29.927 12.37H414.82Zm0-245.167q-18.044 0-30.497-12.32t-12.453-30.037q0-17.716 12.453-30.086 12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.486 12.69 12.487 12.69 30.203 0 17.717-12.69 29.92-12.69 12.203-29.927 12.203H414.82ZM189.379-156.681q-32.652 0-55.878-22.829t-23.226-55.731q0-32.549 23.15-55.647 23.151-23.097 55.95-23.097 32.799 0 55.313 23.484 22.515 23.484 22.515 56.246 0 32.212-22.861 54.893-22.861 22.681-54.963 22.681Zm0-245.167q-32.652 0-55.878-23.134-23.226-23.135-23.226-55.623 0-32.487 23.467-55.517t56.12-23.03q32.102 0 54.721 23.288 22.62 23.288 22.62 55.775 0 32.488-22.861 55.364-22.861 22.877-54.963 22.877Zm-.82-244.833q-32.224 0-55.254-23.288-23.03-23.289-23.03-55.623 0-32.333 23.271-55.364 23.272-23.03 55.495-23.03 32.224 0 55.193 23.288 22.969 23.289 22.969 55.622 0 32.334-23.21 55.364-23.21 23.031-55.434 23.031Z"/></svg>
+                </label>
+                <div class="toc-content">
+                    
+
+<div class="toc-container">
+    
+
+    <ul>
+        
+            
+            
+                <li><a href="https://codeotter0201.github.io/blog/macos-capslock/#macos-zhong-ying-shu-ru-de-que-dian">MacOS 中英輸入的缺點</a>
+                    
+                        <ul>
+                            
+                                
+                                    <li><a href="https://codeotter0201.github.io/blog/macos-capslock/#1-qu-xiao-zhong-ying-qie-huan">1. 取消中英切換</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://codeotter0201.github.io/blog/macos-capslock/#2-zhong-xin-bang-ding-zhong-ying-qie-huan-gong-neng">2. 重新綁定中英切換功能</a>
+                                        
+                                    </li>
+                                
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://codeotter0201.github.io/blog/macos-capslock/#jie-lun">結論</a>
+                    
+                </li>
+            
+        
+    </ul>
+</div>
+
+
+                </div>
+            </div>
+        
+
+        
+        
+
+        
+        <a href="#" id="top-button" class="no-hover-padding" title="Go to the top of the page">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"/></svg>
+        </a>
+    </div>
+
+
+<span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://codeotter0201.github.io/js/copyCodeToClipboard.min.js"></script><script defer src="https://codeotter0201.github.io/js/footnoteBacklinks.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs">
+                <ul>
+                    
+                    
+                    
+                    
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href=https://github.com/codeotter0201/>
+                                    <img alt=github title=github src="https://codeotter0201.github.io/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+
+                
+                Powered by
+                <a rel=""  href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel=""  href="https://github.com/welpo/tabi">tabi</a>
+
+                •
+                    <a rel=""  href="https:&#x2F;&#x2F;github.com&#x2F;codeotter0201&#x2F;codeotter0201.github.io">
+                        Site source
+                    </a></small>
+        </div>
+    </section>
+
+    <div id="searchModal" class="search-modal js" role="dialog" aria-labelledby="modalTitle">
+    <h1 id="modalTitle" class="visually-hidden">Search</h1>
+    <div id="modal-content">
+        <div id="searchBar">
+            <div class="search-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                    <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                </svg>
+            </div>
+            <input id="searchInput" role="combobox" autocomplete="off" spellcheck="false" aria-expanded="false" aria-controls="results-container" placeholder="Search…"/>
+            <div id="clear-search" class="close-icon interactive-icon" tabindex="0" role="button" title="Clear search">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                </svg>
+            </div>
+        </div>
+        <div id="results-container">
+            <div id="results-info"><span id="zero_results"> No results</span>
+                <span id="one_results"> $NUMBER result</span>
+                <span id="many_results"> $NUMBER results</span><span id="two_results"> $NUMBER results</span>
+                <span id="few_results"> $NUMBER results</span>
+            </div>
+            <div id="results" role="listbox"></div>
+        </div>
+    </div>
+</div>
+</footer>
+
+</body>
+
+</html>

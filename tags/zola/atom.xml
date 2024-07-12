@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://codeotter0201.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:base="http://purl.org/atompub/base/1.0/" xml:lang="en" xml:base="https:&#x2F;&#x2F;codeotter0201.github.io">
+    <str:translations xmlns:str="https://github.com/welpo/tabi">
+        <str:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</str:about_feeds>
+        <str:visit_the_site>Visit website</str:visit_the_site>
+        <str:recent_posts>Recent posts</str:recent_posts>
+    </str:translations><link rel="extra-stylesheet" href="https://codeotter0201.github.io/skins/indigo_ingot.css?h=e6047cb6066e6092bccd" /><title>~/ender - zola</title>
+    <link href="https://codeotter0201.github.io/tags/zola/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://codeotter0201.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2024-02-09T00:00:00+00:00</updated>
+    <id>https://codeotter0201.github.io/tags/zola/atom.xml</id><entry xml:lang="en">
+        <title>透過 Github Pages + Actions + Zola 建立靜態網站</title>
+        <published>2024-02-09T00:00:00+00:00</published>
+        <updated>2024-02-09T00:00:00+00:00</updated>
+        <author>
+            <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://codeotter0201.github.io/blog/deploy-zola/" type="text/html"/>
+        <id>https://codeotter0201.github.io/blog/deploy-zola/</id>
+        <summary type="html">應用 Zola 與 Github Pages，輕鬆創建部署現代化靜態網站</summary>
+        </entry>
+</feed>
